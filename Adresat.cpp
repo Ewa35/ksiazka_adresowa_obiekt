@@ -1,34 +1,67 @@
-#ifndef ADRESAT_H
-#define ADRESAT_H
+# include "Adresat.h"
 
-#include <iostream>
-using namespace std;
+void Adresat::ustawIdAdresata(int noweId)
+{
+     if (noweId>=0)
+    {
+       idAdresata=noweId;
+    }
+}
+void Adresat::ustawIdUzytkownika(int noweIdUzytkownika)
+{
+     if (noweIdUzytkownika>=0)
+    {
+       idUzytkownika=noweIdUzytkownika;
+    }
+}
+void Adresat::ustawImie(string noweImie)
+{
+    imie=noweImie;
+}
+void Adresat::ustawNazwisko(string noweNazwisko)
+{
+    nazwisko=noweNazwisko;
+}
+void Adresat::ustawNumerTelefonu(string nowyNumerTelefonu)
+{
+    numerTelefonu=nowyNumerTelefonu;
+}
+void Adresat::ustawEmail(string nowyEmail)
+{
+    email=nowyEmail;
+}
+void Adresat::ustawAdres(string nowyAdres)
+{
+    adres=nowyAdres;
+}
 
-class Adresat
+int Adresat::pobierzIdAdresata()
+{
+    return idAdresata;
+}
+int Adresat::pobierzIdUzytkownika()
 {
 
-    int idAdresata, idUzytkownika;
-    string imie, nazwisko, numerTelefonu, email, adres;
+    return idUzytkownika;
+}
 
-
-
-    public:
-    void ustawIdAdresata(int noweId);
-    void ustawIdUzytkownika(int noweIdUzytkownika);
-    void ustawImie(string noweImie);
-    void ustawNazwisko(string noweNazwisko);
-    void ustawNumerTelefonu(string nowyNumerTelefonu);
-    void ustawEmail(string nowyEmail);
-    void ustawAdres(string nowyAdres);
-
-    int pobierzIdAdresata();
-    int pobierzIdUzytkownika();
-    string pobierzImie();
-    string pobierzNazwisko();
-    string pobierzNumerTelefonu();
-    string pobierzEmail();
-    string pobierzAdres();
-
-
-};
-#endif
+string Adresat::pobierzImie()
+{
+    return imie;
+}
+string Adresat::pobierzNazwisko()
+{
+    return nazwisko;
+}
+string Adresat::pobierzNumerTelefonu()
+{
+    return numerTelefonu;
+}
+string Adresat::pobierzEmail()
+{
+    return email;
+}
+string Adresat::pobierzAdres()
+{
+    return adres;
+}
