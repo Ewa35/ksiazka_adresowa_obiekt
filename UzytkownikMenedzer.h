@@ -8,23 +8,33 @@
 
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
+#include "MetodyPomocnicze.h"
 using namespace std;
 
 class UzytkownikMenedzer
 {
-    int idZalogowanegoUzytkownika;
+   int idZalogowanegoUzytkownika;
+
     vector<Uzytkownik>uzytkownicy;
 
     Uzytkownik podajDaneNowegoUzytkownika ();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
     PlikZUzytkownikami plikZUzytkownikami;
+    string wczytajLinie();
 
 public:
+
     UzytkownikMenedzer(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami){};
-    void rejestracjaUzytkownika ();
+    int rejestracjaUzytkownika ();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
+    int idAktualnegoUzytkownika();
+    int logowanieUzytkownika();
+    void zmianaHaslaZalogowanegoUzytkownika();
+
+
+
 };
 
 #endif
