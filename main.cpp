@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "KsiazkaAdresowa.h"
 using namespace std;
 
@@ -7,7 +8,8 @@ int main()
 
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "PlikZAdresatami.txt");
     char wybor;
-
+while(true)
+{
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
     cout << "---------------------------" << endl;
@@ -25,9 +27,14 @@ case '1':
 case '2':
     ksiazkaAdresowa.logowanieUzytkownika();
     break;
+
+case '9':
+    exit(0);
+    break;
     }
-ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+}
+//ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+//ksiazkaAdresowa.wyswietlWszystkichAdresatow();
    /* ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.dodajAdresata();
     ksiazkaAdresowa.wyswietlWszystkichAdresatow();

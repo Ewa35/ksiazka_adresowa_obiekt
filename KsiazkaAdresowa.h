@@ -17,11 +17,9 @@ public:
     };
     int rejestracjaUzytkownika();
     int logowanieUzytkownika();
+    void menuUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void dodajAdresata ();
-    void wyswietlWszystkichAdresatow();
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-    void zmianaHaslaZalogowanegoUzytkownika();
 };
 
 #endif // KSIAZKAADRESOWA_H

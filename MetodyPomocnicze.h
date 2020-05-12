@@ -8,7 +8,7 @@ class MetodyPomocnicze
 {
 public:
         static string konwerjsaIntNaString(int liczba);
-        string wczytajLinie();
+        static int konwersjaStringNaInt(string liczba);
 
 };
 
