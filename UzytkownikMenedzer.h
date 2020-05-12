@@ -11,9 +11,8 @@
 #include "MetodyPomocnicze.h"
 using namespace std;
 
-class UzytkownikMenedzer
-{
-   int idZalogowanegoUzytkownika;
+class UzytkownikMenedzer {
+    int idZalogowanegoUzytkownika;
     vector<Uzytkownik>uzytkownicy;
     PlikZUzytkownikami plikZUzytkownikami;
 
@@ -24,7 +23,7 @@ class UzytkownikMenedzer
 
 public:
 
-    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami){};
+    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
     int rejestracjaUzytkownika ();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();

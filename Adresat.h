@@ -4,8 +4,7 @@
 #include <iostream>
 using namespace std;
 
-class Adresat
-{
+class Adresat {
 
     int idAdresata;
     int idUzytkownika;
@@ -13,7 +12,7 @@ class Adresat
 
 
 
-    public:
+public:
     void ustawIdAdresata(int noweId);
     void ustawIdUzytkownika(int noweIdUzytkownika);
     void ustawImie(string noweImie);

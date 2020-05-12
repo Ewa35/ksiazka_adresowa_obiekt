@@ -10,8 +10,7 @@
 #include"MetodyPomocnicze.h"
 using namespace std;
 
-class PlikZAdresatami
-{
+class PlikZAdresatami {
     string nazwaPlikuZAdresatami;
 
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
@@ -23,9 +22,9 @@ class PlikZAdresatami
     void wyswietlDaneAdresata(Adresat adresat);
 
 public:
-    PlikZAdresatami (string NAZWAPLIKUZADRESATAMI): nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI){};
-   int wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int id);
-   void dopiszAdresataDoPliku(Adresat adresat);
+    PlikZAdresatami (string NAZWAPLIKUZADRESATAMI): nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI) {};
+    int wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int id);
+    void dopiszAdresataDoPliku(Adresat adresat);
 
 
 };

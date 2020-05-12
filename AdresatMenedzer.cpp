@@ -1,11 +1,9 @@
 # include "AdresatMenedzer.h"
 
- void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int id)
- {
-     idOstatniegoAdresata=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, id);
- }
-int AdresatMenedzer::dodajAdresata (int id)
-{
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int id) {
+    idOstatniegoAdresata=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, id);
+}
+int AdresatMenedzer::dodajAdresata (int id) {
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
@@ -17,8 +15,7 @@ int AdresatMenedzer::dodajAdresata (int id)
     return idOstatniegoAdresata;
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idUz)
-{
+Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idUz) {
 
     Adresat adresat;
 
@@ -49,45 +46,36 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idUz)
     return adresat;
 }
 
-string AdresatMenedzer::wczytajLinie()
-{
+string AdresatMenedzer::wczytajLinie() {
     string wejscie = "";
     cin.sync();
     getline(cin, wejscie);
     return wejscie;
 }
 
-string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
-{
-    if (!tekst.empty())
-    {
+string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
+    if (!tekst.empty()) {
         transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
         tekst[0] = toupper(tekst[0]);
     }
     return tekst;
 }
 
-void AdresatMenedzer::wyswietlWszystkichAdresatow()
-{
+void AdresatMenedzer::wyswietlWszystkichAdresatow() {
     system("cls");
-    if (!adresaci.empty())
-    {
+    if (!adresaci.empty()) {
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
-        for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-        {
+        for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             wyswietlDaneAdresata(*itr);
         }
         cout << endl;
-    }
-    else
-    {
+    } else {
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
 }
-void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
-{
+void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
     cout << endl << "Id:         " << adresat.pobierzIdAdresata() << endl;
     cout << "Imie:               " << adresat.pobierzImie() << endl;
     cout << "Nazwisko:           " << adresat.pobierzNazwisko()<< endl;
