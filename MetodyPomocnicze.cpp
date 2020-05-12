@@ -9,10 +9,11 @@ string MetodyPomocnicze :: konwerjsaIntNaString(int liczba)
     return str;
 }
 
-string MetodyPomocnicze ::wczytajLinie()
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
 {
-    cin.sync();
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
+    int liczbaInt;
+    istringstream iss(liczba);
+    iss >> liczbaInt;
+
+    return liczbaInt;
 }
