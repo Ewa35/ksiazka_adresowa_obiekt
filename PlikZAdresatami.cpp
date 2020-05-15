@@ -1,9 +1,9 @@
 #include"PlikZAdresatami.h"
 
-void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
+bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
     if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
@@ -12,11 +12,12 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
         } else {
             plikTekstowy << endl << liniaZDanymiAdresata ;
         }
-    } else {
-        cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
-    }
+    idOstatniegoAdresata++;
     plikTekstowy.close();
     system("pause");
+    return true;
+    }
+    return false;
 }
 string PlikZAdresatami:: zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat) {
     string liniaZDanymiAdresata = "";
@@ -39,17 +40,13 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy) {
         return false;
 }
 
-# include "PlikZAdresatami.h"
-
-int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int id) {
+vector<Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
+    vector <Adresat> adresaci;
     Adresat adresat;
-    adresaci.clear();
-    int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
-    int idZalogowanegoUzytkownika=id;
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
 
     if (plikTekstowy.good() == true) {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {
@@ -57,8 +54,9 @@ int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adres
                 adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
                 adresaci.push_back(adresat);
             }
+            daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
         }
-        daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+
     } else
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
 
@@ -66,9 +64,8 @@ int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adres
 
     if (daneOstaniegoAdresataWPliku != "") {
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-        return idOstatniegoAdresata;
-    } else
-        return 0;
+        return adresaci;
+    }
 
 }
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
@@ -129,3 +126,6 @@ string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     }
     return liczba;
 }
+int PlikZAdresatami::pobierzIdOstatniegoAdresata(){
+     return idOstatniegoAdresata;
+ }

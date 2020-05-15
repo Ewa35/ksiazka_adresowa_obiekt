@@ -1,64 +1,56 @@
 # include "AdresatMenedzer.h"
 
-void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int id) {
-    idOstatniegoAdresata=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, id);
-}
-int AdresatMenedzer::dodajAdresata (int id) {
+void AdresatMenedzer::dodajAdresata () {
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    Adresat adresat = podajDaneNowegoAdresata( id);
+    Adresat adresat = podajDaneNowegoAdresata( );
 
     adresaci.push_back(adresat);
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
+    if(plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    {
+        cout<<"Nowy adresat zostal dodany."<<endl;
+    }
+    else
+        cout<<"Blad. Nie udalo sie dodac nowego adresata do pliku." <<endl;
+    system("pause");
 
-    return idOstatniegoAdresata;
+
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idUz) {
+Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
 
     Adresat adresat;
 
-    int id,  idObecnegoUzytkownika;
     string imie, nazwisko, numerTelefonu, email, adres;
-    idObecnegoUzytkownika=idUz;
-    id=++idOstatniegoAdresata;
-    adresat.ustawIdAdresata(id);
-    adresat.ustawIdUzytkownika(idObecnegoUzytkownika);
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
-    imie=wczytajLinie();
-    adresat.ustawImie(zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie));
+    imie=MetodyPomocnicze::wczytajLinie();
+    imie= MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
 
     cout << "Podaj nazwisko: ";
-    nazwisko=wczytajLinie();
-    adresat.ustawNazwisko(zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko));
+    nazwisko=MetodyPomocnicze::wczytajLinie();
+    nazwisko=MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
 
     cout << "Podaj numer telefonu: ";
-    adresat.ustawNumerTelefonu (wczytajLinie());
+    numerTelefonu=MetodyPomocnicze::wczytajLinie();
 
     cout << "Podaj email: ";
-    adresat.ustawEmail(wczytajLinie());
+    email=MetodyPomocnicze::wczytajLinie();
+
 
     cout << "Podaj adres: ";
-    adresat.ustawAdres(wczytajLinie());
+    adres=MetodyPomocnicze::wczytajLinie();
+
+    adresat.ustawImie(imie);
+    adresat.ustawNazwisko(nazwisko);
+    adresat.ustawNumerTelefonu (numerTelefonu);
+     adresat.ustawEmail(email);
+    adresat.ustawAdres(adres);
 
     return adresat;
-}
-
-string AdresatMenedzer::wczytajLinie() {
-    string wejscie = "";
-    cin.sync();
-    getline(cin, wejscie);
-    return wejscie;
-}
-
-string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
-    if (!tekst.empty()) {
-        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-        tekst[0] = toupper(tekst[0]);
-    }
-    return tekst;
 }
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {

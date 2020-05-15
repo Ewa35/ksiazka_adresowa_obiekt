@@ -13,15 +13,22 @@
 --
 - uzytkownikMenedzer: UzytkownikMendzer
 - adresatMenedzer: AdresatMenedzer
-- id: integer
+- NAZWA_PLIKU_Z_ADRESATAMI: string
 --
 KsiazkaAdresowa()
-+ rejestracjaUzytkownika(): integer
-+ logowanieUzytkownika(): integer
+~KsiazkaAdrosowa()
++ rejestracjaUzytkownika(): void
++ logowanieUzytkownika(): void
 + wypiszWszytskichUzytkownikow(): void
-+ menuUzytkownika():void
-+wczytajAdresatowZalogowanegoUzytkownikaZPliku(): void
-
++ wybierzOpcjeZMenuGlownego():char
++ wybierzOpcjeZMenuUzytkownika():char
++ dodajAdresata(): void
++ zmianaHaslaZalogowanegoUzytkownika():void
++ wypiszWszystkichAdresatow(): void
++idAktualnegoUzytkownika(): integer
++ wyswietlWszystkichAdresatow(): void
++ wylogujUzytkownika(): void
++ czyUzytkownikJestZalogowany(): void
 
 </panel_attributes>
     <additional_attributes/>
@@ -71,7 +78,7 @@ KsiazkaAdresowa()
 - podajDaneNowegoUzytkownika(): Uzytkownik
 - pobierzIdNowegoUzytkownika(): integer
 - czyIstniejeLogin(): bool
-- wczytajLinie(): string
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -86,7 +93,7 @@ KsiazkaAdresowa()
     </coordinates>
     <panel_attributes>PlikZUzytkownikami
 --
-- nazwaPlikuZUzytkownikami: string
+- NAZWA_PLIKU_Z_UZYTKOWNIKAMI: string
 --
 + PlikZUzytkownikami()
 + dopiszUzytkownikaDoPliku(): void
@@ -101,22 +108,6 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>234</y>
-      <w>138</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>MetodyPomocnicze
---
-
---
-+ konwersjaIntNaString(): string
-+ konwersjaStringNaInt(): integer</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>372</x>
       <y>372</y>
       <w>228</w>
@@ -124,26 +115,50 @@ KsiazkaAdresowa()
     </coordinates>
     <panel_attributes>AdresatMenedzer
 --
--idOstatniegoAdresata: integer
+-ID_ZALOGOWANEGO_UZYTKOWNIKA: integer
 -adresaci: vector &lt;Adresat&gt;
 -plikZAdresatami: PlikZAdresatami
 --
 -podajDaneNowegoAdresata(): Adresat
-- wczytajLinie(): string
--zamienPierwszaLitereNaDuzaAPozostaleNaMale(): string
 -wyswietlDaneAdresata(): void
 
 + AdresatMenedzer()
 +dodajAdresata: integer
 + wyswietlWszystkichAdresatow(): void 
-+wczytajAdresatowZalogowanegoUzytkownikaZPliku(): void</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>300</y>
+      <x>624</x>
+      <y>366</y>
+      <w>312</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>PlikZAdresatami
+--
+-NAZWA_PLIKU_Z_ADRESATAMI:string
+- idOstatniegoAdresata: integer
+--
+-pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami():integer
+-pobierzDaneAdresata(): Adresat
+-pobierzIdAdresataZDanychOddzielonychPionowymiKreskami():integer
+-pobierzLiczbe(): string 
+-czyPlikJestPusty(): bool
+-zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami():string
+-wyswietlDaneAdresata(): void
++PlikZAdresatami()
++wczytajAdresatowZalogowanegoUzytkownikaZPliku():vector&lt;Adresat&gt;
++dopiszAdresataDoPliku(): bool
++ pobierzIdOstatniegoAdresata(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>204</x>
+      <y>294</y>
       <w>150</w>
       <h>240</h>
     </coordinates>
@@ -157,6 +172,7 @@ KsiazkaAdresowa()
 -email:string
 -adres:string
 --
+Adresat()
 +ustawIdAdresata(): void
 +ustawIdUzytkownika(): void
 +ustawImie(): void
@@ -177,25 +193,51 @@ pobierzAdres(): string</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>366</y>
-      <w>312</w>
-      <h>174</h>
+      <x>762</x>
+      <y>258</y>
+      <w>138</w>
+      <h>96</h>
     </coordinates>
-    <panel_attributes>PlikZAdresatami
+    <panel_attributes>MetodyPomocnicze
 --
--nazwaPlikuZAdresatami:string
+
 --
--pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami():integer
--pobierzDaneAdresata(): Adresat
--pobierzIdAdresataZDanychOddzielonychPionowymiKreskami():integer
--pobierzLiczbe(): string 
--czyPlikJestPusty(): bool
--zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami():string
--wyswietlDaneAdresata(): void
-+PlikZAdresatami()
-+wczytajAdresatowZalogowanegoUzytkownikaZPliku():integer
-+dopiszAdresataDoPliku(): void</panel_attributes>
++ konwersjaIntNaString(): string
++ konwersjaStringNaInt(): integer
++ wczytajLinie(): string
++ zamienPierwszaLitereNaDuzaAPozostaleNaMale(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>762</x>
+      <y>258</y>
+      <w>138</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>MetodyPomocnicze
+--
+
+--
++ konwersjaIntNaString(): string
++ konwersjaStringNaInt(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>762</x>
+      <y>258</y>
+      <w>138</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>MetodyPomocnicze
+--
+
+--
++ konwersjaIntNaString(): string
++ konwersjaStringNaInt(): integer</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
