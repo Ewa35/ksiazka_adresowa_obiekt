@@ -4,21 +4,37 @@
 
 #include "UzytkownikMenedzer.h"
 #include "AdresatMenedzer.h"
+#include "MetodyPomocnicze.h"
+
 using namespace std;
 
 class KsiazkaAdresowa {
     UzytkownikMenedzer uzytkownikMenedzer;
-    AdresatMenedzer adresatMenedzer;
-    int id;
+    AdresatMenedzer *adresatMenedzer;
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
+
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami,string nazwaPlikuZAdresatami):uzytkownikMenedzer(nazwaPlikuZUzytkownikami),adresatMenedzer(nazwaPlikuZAdresatami) {
-        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami,string nazwaPlikuZAdresatami):uzytkownikMenedzer(nazwaPlikuZUzytkownikami),NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    {
+        adresatMenedzer=NULL;
     };
-    int rejestracjaUzytkownika();
-    int logowanieUzytkownika();
-    void menuUzytkownika();
+    ~ KsiazkaAdresowa()
+    {
+        delete adresatMenedzer;
+        adresatMenedzer=NULL;
+    };
+
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
+    void rejestracjaUzytkownika();
+    void logowanieUzytkownika();
+    void dodajAdresata();
+    void zmianaHaslaZalogowanegoUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    int idAktualnegoUzytkownika();
+    void wyswietlWszystkichAdresatow();
+    void wylogujUzytkownika ();
+    bool czyUzytkownikJestZalogowany();
 };
 
 #endif

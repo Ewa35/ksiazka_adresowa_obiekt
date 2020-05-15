@@ -1,60 +1,89 @@
 # include "KsiazkaAdresowa.h"
 
-int KsiazkaAdresowa :: rejestracjaUzytkownika() {
-    uzytkownikMenedzer.rejestracjaUzytkownika();
-    id=uzytkownikMenedzer.idAktualnegoUzytkownika();
-    wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-    menuUzytkownika();
-    return id;
+
+char KsiazkaAdresowa ::wybierzOpcjeZMenuGlownego()
+{
+    char wybor;
+
+    system("cls");
+    cout << "    >>> MENU  GLOWNE <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Rejestracja" << endl;
+    cout << "2. Logowanie" << endl;
+    cout << "9. Koniec programu" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+
+    return wybor;
 }
-int KsiazkaAdresowa ::logowanieUzytkownika() {
+char KsiazkaAdresowa ::wybierzOpcjeZMenuUzytkownika()
+{
+    char wybor;
+
+    system("cls");
+    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Dodaj adresata" << endl;
+    cout << "2. Wyswietl adresatow" << endl;
+    cout << "---------------------------" << endl;
+    cout << "7. Zmien haslo" << endl;
+    cout << "8. Wyloguj sie" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+
+    return wybor;
+}
+
+void KsiazkaAdresowa :: rejestracjaUzytkownika() {
+    uzytkownikMenedzer.rejestracjaUzytkownika();
+
+
+}
+void KsiazkaAdresowa ::logowanieUzytkownika() {
 
     uzytkownikMenedzer.logowanieUzytkownika();
-    id=uzytkownikMenedzer.idAktualnegoUzytkownika();
-    if (id==0) {
-        return 0;
-    } else {
-        wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-        menuUzytkownika();
-        return id;
+    if (uzytkownikMenedzer.idAktualnegoUzytkownika()>0)
+    {
+        adresatMenedzer= new AdresatMenedzer (NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.idAktualnegoUzytkownika());
     }
 
 }
-void KsiazkaAdresowa ::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-    adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(id);
-}
-void KsiazkaAdresowa ::menuUzytkownika() {
-    char wybor;
-    while (id>0) {
-        system("cls");
-        cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
-        cout << "---------------------------" << endl;
-        cout << "1. Dodaj adresata" << endl;
-        cout << "2. Wyswietl adresatow" << endl;
-        cout << "---------------------------" << endl;
-        cout << "7. Zmien haslo" << endl;
-        cout << "8. Wyloguj sie" << endl;
-        cout << "---------------------------" << endl;
-        cout << "Twoj wybor: ";
-        cin>>wybor;
-        switch(wybor) {
-        case '1':
-            adresatMenedzer.dodajAdresata(id);
-            break;
-        case '2':
-            adresatMenedzer.wyswietlWszystkichAdresatow();
-            break;
-        case '7':
-            uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
-            break;
-        case '8':
-            id=0;
 
-        }
-    }
+void KsiazkaAdresowa ::dodajAdresata()
+{
+  adresatMenedzer->dodajAdresata();
 }
+void KsiazkaAdresowa ::wyswietlWszystkichAdresatow()
+{
+    adresatMenedzer->wyswietlWszystkichAdresatow();
+}
+void KsiazkaAdresowa ::zmianaHaslaZalogowanegoUzytkownika()
+{
+    uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
+}
+
 void KsiazkaAdresowa :: wypiszWszystkichUzytkownikow() {
     uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 
 }
 
+void KsiazkaAdresowa ::wylogujUzytkownika()
+{
+    uzytkownikMenedzer.wylogujUzytkownika();
+    delete adresatMenedzer;
+    adresatMenedzer=NULL;
+}
+bool KsiazkaAdresowa ::czyUzytkownikJestZalogowany()
+{
+   if( uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+    return true;
+   else
+    return false;
+}
+int KsiazkaAdresowa ::idAktualnegoUzytkownika()
+{
+    int id=uzytkownikMenedzer.idAktualnegoUzytkownika();
+    return id;
+}
