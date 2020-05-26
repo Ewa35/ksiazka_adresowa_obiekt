@@ -1,5 +1,5 @@
 1|1|Ola|A|a|a|a|
 3|2|Ola|Kol|c|c|c|
-4|2|Ula|D|d|d|d|
+4|2|Ula|Kwiecien|d|a@z|d|
 5|1|Tom|E|e|e|e|
-7|2|Rop|W|w|w|w|
+8|1|Iga|Dol|e|e|e|
