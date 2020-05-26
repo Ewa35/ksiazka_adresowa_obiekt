@@ -1,10 +1,5 @@
-1|1|A|A|a|a|a|
-3|2|C|C|c|c|c|
-4|2|D|D|d|d|d|
-5|3|E|E|e|e|e|
-6|3|F|F||ff||
-8|4|Ola|P|p|p|p|
-9|1|Ola|Kwiec|p|p|p|
-10|1|Ola|Kowal|p|p|p|
-14|1|Tom|Jula|3|3|3|
-15|1|Gol|Iol|2|2|2|
+1|1|Ola|A|a|a|a|
+3|2|Ola|Kol|c|c|c|
+4|2|Ula|D|d|d|d|
+5|1|Tom|E|e|e|e|
+7|2|Rop|W|w|w|w|

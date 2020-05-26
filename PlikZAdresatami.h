@@ -7,26 +7,25 @@
 #include <sstream>
 
 #include"Adresat.h"
+#include"PlikTekstowy.h"
 #include"MetodyPomocnicze.h"
 using namespace std;
 
-class PlikZAdresatami {
+class PlikZAdresatami : public PlikTekstowy{
 
-    const string NAZWA_PLIKU_Z_ADRESATAMI;
     int idOstatniegoAdresata;
 
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    bool czyPlikJestPusty(fstream &plikTekstowy);
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     void wyswietlDaneAdresata(Adresat adresat);
     void usunPlik(string nazwaPlikuZRozszerzeniem);
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 
 public:
-    PlikZAdresatami (string NazwaPlikuZAdresatami): NAZWA_PLIKU_Z_ADRESATAMI(NazwaPlikuZAdresatami) {
+    PlikZAdresatami(string nazwaPliku) : PlikTekstowy(nazwaPliku){
     idOstatniegoAdresata=0;
     };
     vector<Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
