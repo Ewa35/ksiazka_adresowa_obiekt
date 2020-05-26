@@ -24,11 +24,13 @@ KsiazkaAdresowa()
 + wybierzOpcjeZMenuUzytkownika():char
 + dodajAdresata(): void
 + zmianaHaslaZalogowanegoUzytkownika():void
-+ wypiszWszystkichAdresatow(): void
-+idAktualnegoUzytkownika(): integer
 + wyswietlWszystkichAdresatow(): void
 + wylogujUzytkownika(): void
 + czyUzytkownikJestZalogowany(): void
++wyszukajAdresatowPoImieniu():void
++wyszukajAdresatowPoNazwisku():void
++ usunAdresata():void
++edytujAdresata():void
 
 </panel_attributes>
     <additional_attributes/>
@@ -70,11 +72,12 @@ KsiazkaAdresowa()
 - plikZUzytkownikami: PlikZUzytkownikami
 --
 + rejestracjaUzytkownika(): void
-+ logowanieUzytkownika(): integer
++ logowanieUzytkownika(): void
 + wypiszWszystkichUzytkownikow():void
 + wczytajUzytkownikowZPliku(): void 
 + idAktualnegoUzytkownika():integer
 + zmianaHaslaZalogowanegoUzytkownika():void
++ wylogujUzytkownika():void
 - podajDaneNowegoUzytkownika(): Uzytkownik
 - pobierzIdNowegoUzytkownika(): integer
 - czyIstniejeLogin(): bool
@@ -121,10 +124,17 @@ KsiazkaAdresowa()
 --
 -podajDaneNowegoAdresata(): Adresat
 -wyswietlDaneAdresata(): void
+- wyswietlIloscWyszukanychAdresatow():void
+- wybierzOpcjeZMenuEdycja(): char
 
 + AdresatMenedzer()
 +dodajAdresata: integer
 + wyswietlWszystkichAdresatow(): void 
++ wyszukajAdresatowPoImieniu():void
++ wyszukajAdresatowPoNazwisku():void
++ usunAdresata():integer
++ edytujAdresata():void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -138,7 +148,7 @@ KsiazkaAdresowa()
     </coordinates>
     <panel_attributes>PlikZAdresatami
 --
--NAZWA_PLIKU_Z_ADRESATAMI:string
+
 - idOstatniegoAdresata: integer
 --
 -pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami():integer
@@ -148,10 +158,15 @@ KsiazkaAdresowa()
 -czyPlikJestPusty(): bool
 -zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami():string
 -wyswietlDaneAdresata(): void
+- usunPlik(): void
+- zmienNazwePliku(): void
 +PlikZAdresatami()
 +wczytajAdresatowZalogowanegoUzytkownikaZPliku():vector&lt;Adresat&gt;
 +dopiszAdresataDoPliku(): bool
-+ pobierzIdOstatniegoAdresata(): integer</panel_attributes>
++ pobierzIdOstatniegoAdresata(): integer
++ usunWybranaLinieWPliku(): void
++ edytujWybranaLinieWPliku(): void
++ zaktualizujDaneWybranegoAdresata(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -205,7 +220,10 @@ pobierzAdres(): string</panel_attributes>
 + konwersjaIntNaString(): string
 + konwersjaStringNaInt(): integer
 + wczytajLinie(): string
-+ zamienPierwszaLitereNaDuzaAPozostaleNaMale(): string</panel_attributes>
++ zamienPierwszaLitereNaDuzaAPozostaleNaMale(): string
++ wczytajZnak(): char
++podajIdWybranegoAdresata():integer
++ wczytajLiczbeCalkowita(): integer</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -238,6 +256,23 @@ pobierzAdres(): string</panel_attributes>
 --
 + konwersjaIntNaString(): string
 + konwersjaStringNaInt(): integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>246</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>PlikTekstowy
+--
+NAZWA_PLIKU: string
+--
++ PlikTekstowy() 
++pobierzNazwePliku():string
++czyPlikJestPusty(): bool</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
