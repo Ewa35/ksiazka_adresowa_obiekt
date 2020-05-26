@@ -86,11 +86,6 @@ bool KsiazkaAdresowa ::czyUzytkownikJestZalogowany()
    else
     return false;
 }
-int KsiazkaAdresowa ::idAktualnegoUzytkownika()
-{
-    int id=uzytkownikMenedzer.idAktualnegoUzytkownika();
-    return id;
-}
 void KsiazkaAdresowa :: wyszukajAdresatowPoImieniu()
 {
     adresatMenedzer->wyszukajAdresatowPoImieniu();

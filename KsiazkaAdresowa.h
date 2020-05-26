@@ -31,7 +31,6 @@ public:
     void dodajAdresata();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wypiszWszystkichUzytkownikow();
-    int idAktualnegoUzytkownika();
     void wyswietlWszystkichAdresatow();
     void wylogujUzytkownika ();
     bool czyUzytkownikJestZalogowany();
