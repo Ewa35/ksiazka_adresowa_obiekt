@@ -1,5 +1,9 @@
-1|1|Ola|A|a|a|a|
-3|2|Ola|Kol|c|c|c|
-4|2|Ula|Kwiecien|d|a@z|d|
-5|1|Tom|E|e|e|e|
-8|1|Iga|Dol|e|e|e|
+1|1|Ola|Kol|a|a|a|
+2|1|Paula|Kowalska|b|b|ul. zwirki szczecin|
+4|2|Ula|Kol|d|d|d|
+5|2|Zuzia |Ol|e|e|e|
+6|1|Tom|Foll|f|ff|f|
+7|2|Jola|Roool|r|a=@ol|r|
+8|3|Ula|D|||t|
+9|3|Cek'|E|E||E|
+10|3|Tom |Mol|222 333 444|g|g|

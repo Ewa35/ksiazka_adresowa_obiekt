@@ -86,14 +86,13 @@ void UzytkownikMenedzer ::logowanieUzytkownika() {
                 }
             }
         }
-        if (iloscUzytkownikow==0)
+    }
+    if (iloscUzytkownikow==0)
             {
                 cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
                 system("pause");
             }
 
-
-    }
 }
     void UzytkownikMenedzer ::zmianaHaslaZalogowanegoUzytkownika() {
         string noweHaslo = "";
