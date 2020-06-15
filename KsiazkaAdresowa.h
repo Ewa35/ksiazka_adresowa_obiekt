@@ -4,7 +4,7 @@
 
 #include "UzytkownikMenedzer.h"
 #include "AdresatMenedzer.h"
-#include "MetodyPomocnicze.h"
+//#include "MetodyPomocnicze.h"
 
 using namespace std;
 

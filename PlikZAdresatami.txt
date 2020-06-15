@@ -4,6 +4,5 @@
 5|2|Zuzia |Ol|e|e|e|
 6|1|Tom|Foll|f|ff|f|
 7|2|Jola|Roool|r|a=@ol|r|
-8|3|Ula|D|||t|
-9|3|Cek'|E|E||E|
-10|3|Tom |Mol|222 333 444|g|g|
+8|3|Zuzia|Ul|e|e|e|
+9|3|Roman|E|e|e||
