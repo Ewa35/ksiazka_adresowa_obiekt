@@ -141,10 +141,7 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata(){
             if (idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
             {
                numerUsuwanejLinii=numerWczytanejLinii;
-               if(idAdresata==idOstatniegoAdresata)
-               {
-                   idOstatniegoAdresata-=1;
-               }
+
             }
             else if (numerWczytanejLinii == 1 && numerWczytanejLinii != numerUsuwanejLinii)
                 tymczasowyPlikTekstowy << wczytanaLinia;
@@ -161,7 +158,9 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata(){
         tymczasowyPlikTekstowy.close();
         usunPlik(pobierzNazwePliku().c_str());
         zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, pobierzNazwePliku().c_str());
+
     }
+    podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata( idAdresata);
 }
 
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
@@ -222,4 +221,33 @@ void PlikZAdresatami::zaktualizujDaneWybranegoAdresata(Adresat adresat)
     edytujWybranaLinieWPliku(adresat.pobierzIdAdresata(), liniaZDanymiAdresata);
 
     cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
+}
+void PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata)
+{
+    if (idUsuwanegoAdresata == idOstatniegoAdresata)
+    {
+         pobierzZPlikuIdOstatniegoAdresata();
+    }
+}
+void PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()
+{
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    string daneOstaniegoAdresataWPliku = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
+
+    if (plikTekstowy.good() == true)
+    {
+        while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {}
+            daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+            plikTekstowy.close();
+    }
+    else
+        cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
+
+    if (daneOstaniegoAdresataWPliku != "")
+    {
+        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
+    }
+
 }
